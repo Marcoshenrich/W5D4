@@ -7,7 +7,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
 class User < ApplicationRecord
+
+    has_many :courses,
+        primary_key: :id,
+        foreign_key: :instructor_id,
+        class_name: :Course
     
     has_many :enrollments,
         primary_key: :id,

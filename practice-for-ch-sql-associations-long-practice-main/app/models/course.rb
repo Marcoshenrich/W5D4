@@ -11,6 +11,13 @@
 #
 class Course < ApplicationRecord
 
+    belongs_to :instructor,
+        primary_key: :id,
+        foreign_key: :instructor_id,
+        class_name: :User
+
+
+
     has_many :enrollments,
         primary_key: :id,
         foreign_key: :course_id,
@@ -21,6 +28,18 @@ class Course < ApplicationRecord
         through: :enrollments,
         source: :student
     #the source calls the method in the associated belongs_to record
+
+    belongs_to :prerequisite,
+        primary_key: :id,
+        foreign_key: :prereq_id,
+        class_name: :Course,
+        optional: true
+    
+    #only need 1 association if referring to your own table
+
+    
+
+
 
     
 end

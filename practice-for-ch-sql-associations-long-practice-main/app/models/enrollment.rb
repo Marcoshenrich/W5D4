@@ -21,6 +21,7 @@ class Enrollment < ApplicationRecord
         foreign_key: :student_id,
         class_name: :User
 
+
     #if a table contains a foreign key referencing another table, it is a belongs to association
     # the foreign key in the association should match
     # belongs_to is singular, #has_many is plural
