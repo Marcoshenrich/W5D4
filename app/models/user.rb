@@ -8,8 +8,16 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
-    belongs_to :enrollment,
-    primary_key: :id,
-    foreign_key: :enrollment_id
-    class_name: :Enrollment
+    
+    has_many :enrollments,
+        primary_key: :id,
+        foreign_key: :student_id,
+        class_name: :Enrollment,
+        dependent: :destroy 
+
+    has_many :enrolled_courses,
+        through: :enrollments,
+        source: :course
+
+    #the source calls the method in the associated belongs_to record
 end
